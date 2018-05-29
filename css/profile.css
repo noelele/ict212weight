@@ -1,0 +1,29 @@
+
+.tableStyle{
+    background-color: #323232;
+    color:white;
+    text-align: center;
+    border: 1px solid white;
+    height:10px;
+    padding: 5px;
+    table-layout: fixed;
+    width:100%;
+
+}
+.tableHead{
+  background-color: #323232;
+  color:white;
+  text-align: center;
+  border: 1px solid white;
+  height:16px;
+padding: 5px;
+table-layout: fixed;
+width:100%;
+
+}
+
+/*.bmiCalc table th{
+  color:white;
+  border:1px;
+  border-color: white;
+}*/
