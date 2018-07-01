@@ -23,6 +23,18 @@
 			return $res;
 		}
 
+		public function retrieveExercise(){
+			$sql = "SELECT * FROM exercises";
+			$exerciseArray = array();
+			$res = mysqli_query($this->conn, $sql);
+
+			while($row = mysqli_fetch_assoc($res)){
+				$exerciseArray[] = $row;
+				//populate itemarray with data inside table
+			}
+			return $exerciseArray;
+		}
+
 	}
 
 ?>

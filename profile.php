@@ -36,9 +36,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
-            </li>
+          
             <li class="nav-item ">
               <a class="nav-link" href="bmiCalc.php">BMI Calculator</a>
             </li>
@@ -68,7 +66,7 @@
      <!-- Page Content -->
     <div class="container-fluid">
     <div class="row">
-      <div class="userpic col-md-3 col-xs-3 col-sm-2" >
+      <div class="userpic col-md-3 col-xs-3 col-sm-3" >
       <center>  <img src="img/defaultimageuser.png" ></img></center>
       <center>  <?php
               $userId= $_SESSION['user_id'];
@@ -111,8 +109,9 @@
         </ul>
       </div>
 
-      <div class="bmiCalc col-md-5 col-xs-5 col-sm-6">
+      <div class="bmiCalc col-md-5 col-xs-5 col-sm-5">
         <center><h2>Weight Track</h2></center>
+        <?php $result = $con->query("SELECT * FROM bmi_log WHERE user_id='" . $_SESSION['user_id']. "'"); ?>
         <table class='tableHead'>
                         <tr class='tableHead'>
                             <th class='tableHead'>Date</th>
@@ -122,40 +121,18 @@
                             <th class='tableHead'>Category</th>
                         </tr>
         </table>
-        <table class='tableStyle'>
+        <?php 
+        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+                echo "<table class='tableStyle'>
                         <tr class='tableStyle'>
-                              <td class='tableStyle'><?php
-                                                      $userId= $_SESSION['user_id'];
-                                                      $result = $con->query("SELECT datesubmitted FROM  bmi_log WHERE user_id='" . $userId. "'");
-                                                      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                                                      echo $row['datesubmitted'] ;
-                                                      ?></td>
-                              <td class='tableStyle'><?php
-                                                      $userId= $_SESSION['user_id'];
-                                                      $result = $con->query("SELECT weight FROM  bmi_log WHERE user_id='" . $userId. "'");
-                                                      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                                                      echo $row['weight'] ;
-                                                      ?>kg</td>
-                              <td class='tableStyle'><?php
-                                                      $userId= $_SESSION['user_id'];
-                                                      $result = $con->query("SELECT height FROM  bmi_log WHERE user_id='" . $userId. "'");
-                                                      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                                                      echo $row['height'] ;
-                                                      ?>m</td>
-                              <td class='tableStyle'><?php
-                                                      $userId= $_SESSION['user_id'];
-                                                      $result = $con->query("SELECT bmi FROM  bmi_log WHERE user_id='" . $userId. "'");
-                                                      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                                                      echo number_format((float)$row['bmi'], 2, '.', '');
-                                                      ?></td>
-                              <td class='tableStyle'><?php
-                                                      $userId= $_SESSION['user_id'];
-                                                      $result = $con->query("SELECT category FROM  bmi_log WHERE user_id='" . $userId. "'");
-                                                      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                                                      echo $row['category'] ;
-                                                      ?></td>
+                              <td class='tableStyle'>".$row['datesubmitted']."</td>
+                              <td class='tableStyle'>".$row['weight']."</td>
+                              <td class='tableStyle'>".$row['height']."</td>
+                              <td class='tableStyle'>".number_format((float)$row['bmi'], 2, '.', '')."</td>
+                              <td class='tableStyle'>".$row['category']."</td>
                         </tr>
-       </table>
+                </table>";
+        ?>
 
     </div>
   </div>

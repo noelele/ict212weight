@@ -47,6 +47,11 @@
   
         if($dataOps->registerUser($fname, $lname, $username, $password, $preferredprogram, $usertype)){
           echo "User Registered";
+          $result = $con->query("SELECT * FROM users");
+           while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+          $_SESSION['user_id'] = $row['user_id'];
+          $_SESSION['preferredprogram'] = $row['preferredprogram'];
+          }
           header("location:bmiCalc.php");
         }else{
           echo "Fail". mysqli_error();
@@ -65,6 +70,8 @@
 /*          $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;*/
           $_SESSION['user_id'] = $row['user_id'];
+          $_SESSION['preferredprogram'] = $row['preferredprogram'];
+
           header('location: bmiCalc.php');
         }else if($_POST['username'] == $username && ($_POST['password'] == $password && $usertype == '2')){
   /*        $_SESSION['username'] = $username;

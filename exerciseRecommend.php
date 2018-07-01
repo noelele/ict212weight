@@ -1,8 +1,15 @@
+<?php
+ session_start();
+  require_once('config.php');
+  //phpinfo();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-
+    <?php include 'functions.php' ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -19,7 +26,12 @@
   </head>
 
   <body>
+    <?php
 
+      $dataOps = new dataOps();
+      $exercisesArray = $dataOps->retrieveExercise();
+
+    ?>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -62,77 +74,33 @@
 
       <!-- Page Heading -->
       <h1 class="my-4">Recommended Exercises
-        <small>Bodybuilding</small>
-      </h1>
+        <small><?php
+                        $userId= $_SESSION['user_id'];
+                        $result = $con->query("SELECT preferredprogram FROM users WHERE user_id='" . $userId. "'");
+                        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+                          $preferredprogram = $row['preferredprogram'];
+                        echo $preferredprogram ;
 
+                        ?></small>
+      </h1>
       <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
+     <?php
+     $result = $con->query("SELECT * FROM exercises WHERE type='" . $preferredprogram. "'"); 
+
+     while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+     echo '<div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="img/ex-dumbbenchpress.jpg"><img class="card-img-top" src="img/ex-dumbbenchpress.jpg" alt=""></a>
+            <a href="'.$row['filepath'].'"><img class="card-img-top" src="'.$row['filepath'].'" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">Dumbbell Bench Press</a>
+                <a href="#">'.$row['name'].'</a>
               </h4>
-              <p class="card-text">The dumbbell bench press is an upper body exercise that strengthens the chest, shoulders, and triceps while improving muscular balance. Using dumbbells allows for a great range of motion in the chest and can also be easier on the shoulders and prevent pain.
-</p>
+              <p class="card-text">'.$row['description'].'</p>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="img/ex-legpress.jpg"><img class="card-img-top" src="img/ex-legpress.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Single Leg Press</a>
-              </h4>
-              <p class="card-text">Targets the quadriceps muscles in the front of the thighs, the gluteal muscles in the buttocks, the hamstring muscles in the back of the thighs, and the calves, all in an integrated fashion. It's an especially efficient way to strengthen your lower body.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="img/ex-hammer.jpg"><img class="card-img-top" src="img/ex-hammer.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Incline Hammer Curls</a>
-              </h4>
-              <p class="card-text">The incline hammer curl engages your brachialis and brachioradialis, stabilizing the movement of your arms and accentuating their size. It also trains your flexor muscles, thereby improving grip strength.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="img/ex-rickshaw.jpg"><img class="card-img-top" src="img/ex-rickshaw.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Rickshaw Carry</a>
-              </h4>
-              <p class="card-text">This works with various muscle groups such as quadriceps, hamstrings, abdominals, traps calves, glutes, and lower back.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="img/ex-dips.jpg"><img class="card-img-top" src="img/ex-dips.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Dips - Triceps Version</a>
-              </h4>
-              <p class="card-text">Dips are a compound push exercise with a small range of motion that primarily works your triceps but also engages your forearms, shoulders, chest and lower back.  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="img/ex-calfraise.jpg"><img class="card-img-top" src="img/ex-calfraise.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Calf Raise</a>
-              </h4>
-              <p class="card-text">Calf raises are a method of exercising the gastrocnemius, tibialis posterior and soleus muscles of the lower leg. The movement performed is plantar flexion, a.k.a. ankle extension.</p>
-            </div>
-          </div>
-        </div>
+        </div>';
+      }
+      ?>
       </div>
       <!-- /.row -->
 
