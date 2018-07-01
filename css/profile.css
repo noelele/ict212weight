@@ -1,3 +1,7 @@
+body {
+  padding-top: 55px;
+
+}
 
 .tableStyle{
     background-color: #323232;
@@ -22,8 +26,67 @@ width:100%;
 
 }
 
+footer.footer {
+  position: fixed;
+clear:both;
+height:100%;
+width:100%;
+ margin: 0px;
+    padding: 0px;
+    margin-top: 155px;
+}
 /*.bmiCalc table th{
   color:white;
   border:1px;
   border-color: white;
 }*/
+.userpic{
+  padding-top:10px;
+  opacity:0.85;
+  margin:0;
+  background-color:#323232;
+  width:30%
+  border-width: 0.1px;
+ height:555px;
+ z-index:9999;
+ margin-left:0px;
+ min-height:100%;
+ max-width:100%;
+max-height:100%;
+vertical-align: middle;
+}
+.userdetails{
+  padding:10px 0 0 10px;
+  opacity:0.85;
+  background-color:#b2b2b2;
+  height:555px;
+  max-width:auto;
+}
+.userdetails ul{
+  margin:11px;
+}
+.bmiCalc{
+  padding-top:10px;
+  opacity:0.85;
+  margin:0;
+  background-color:#323232;
+  width:30%
+  border-width: 0.1px;
+  height:555px;
+  z-index:9999;
+  margin-left:0px;
+  min-height:100%;
+  max-width:100%;
+  max-height:100%;
+  vertical-align: middle;
+}
+.bmiCalc h2{
+  color:white;
+  padding-top:0px;
+  text-align: center;
+}
+.userpic h3{
+  color:white;
+  padding-top:0px;
+  text-align: center;
+}
