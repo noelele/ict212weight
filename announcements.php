@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>ANNOUNCEMENTS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -117,15 +117,15 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="adminpage.php">
+                <a class="nav-link" href="adminpage.php">
                   <span data-feather="home"></span>
-                  Exercises <span class="sr-only">(current)</span>
+                  Exercises 
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="announcements.php">
+                <a class="nav-link active" href="announcements.php">
                   <span data-feather="file"></span>
-                  Announcements
+                  Announcements<span class="sr-only">(current)</span>
                 </a>
               </li>
              

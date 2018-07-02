@@ -3,6 +3,10 @@
 	class dataOps{
 
 		public $conn;
+		private $_supportedFormats = ['image/jpg','image/png','image/jpeg',
+ 		'image/gif'];
+
+ 		
 
 		public function __construct(){
 			//connect to db
@@ -33,6 +37,54 @@
 				//populate itemarray with data inside table
 			}
 			return $exerciseArray;
+		}
+
+		public function insertExercise($type, $name,$description,$file){
+			if(is_array($file)){
+ 				if(in_array($file['type'], $this->_supportedFormats)){
+
+ 					move_uploaded_file($file['tmp_name'], 'img/'.$file['name']);
+ 					echo "Image uploaded successfully";
+
+ 				}else{
+ 					echo "File type is not supported";
+ 				}
+ 			}else{
+ 				echo "No file was uploaded";
+ 			}
+
+ 			$filepath = 'img/'.$file['name'];
+			$sql = "INSERT INTO exercises(type,name, description, filepath)
+					VALUES ('$type', '$name','$description','$filepath')";
+			$res = mysqli_query($this->conn,$sql);
+
+			return $res;
+		}
+
+		public function updateExercise($type, $name,$description,$file,$id){
+			if(is_array($file)){
+ 				if(in_array($file['type'], $this->_supportedFormats)){
+
+ 					move_uploaded_file($file['tmp_name'], 'img/'.$file['name']);
+ 					echo "Image uploaded successfully";
+
+ 				}else{
+ 					echo "File type is not supported";
+ 				}
+ 			}else{
+ 				echo "No file was uploaded";
+ 			}
+ 			$filepath = 'img/'.$file['name'];
+			$sql = "UPDATE exercises SET type='$type', name='$name',description='$description', filepath='$filepath' WHERE exercise_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function deleteExercise($id){
+			$sql = "DELETE FROM exercises WHERE exercise_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
 		}
 
 	}
