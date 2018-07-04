@@ -28,7 +28,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="#">Health and Wellness</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,9 @@
           
             <li class="nav-item ">
               <a class="nav-link" href="bmiCalc.php">BMI Calculator</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="announcementsuser.php">Announcements</a>
             </li>
             
             <li class="nav-item ">
@@ -77,7 +80,7 @@
 
           ?></h4></center>
       </div>
-      <div class="userdetails col-md-4 col-xs-4 col-sm-4">
+      <div class="userdetails col-md-3 col-xs-3 col-sm-3">
         <center><h2>Member Information</h2></center>
         <ul class="list-group">
               <!--First Name-->
@@ -102,14 +105,15 @@
                                                       $result = $con->query("SELECT preferredprogram FROM  users WHERE user_id='" . $userId. "'");
                                                       while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
                                                       echo $row['preferredprogram'] ;
-                                                      ?></li>
-              <br>
-              <br>
+                                                      ?>&emsp;<a type="button" class="btn btn-warning pull-right" name="updateBtn" href="updateuser.php?id=<?php echo $userId ?>" >Update</a> </li>
+                                                      <br>
+                                                 
+              
       
         </ul>
       </div>
 
-      <div class="bmiCalc col-md-5 col-xs-5 col-sm-5">
+      <div class="bmiCalc col-md-6 col-xs-6 col-sm-6">
         <center><h2>Weight Track</h2></center>
         <?php $result = $con->query("SELECT * FROM bmi_log WHERE user_id='" . $_SESSION['user_id']. "'"); ?>
         <table class='tableHead'>

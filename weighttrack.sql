@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2018 at 12:59 PM
+-- Generation Time: Jul 04, 2018 at 10:03 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `weighttrack`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `a_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `body` varchar(2225) NOT NULL,
+  `timesubmitted` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`a_id`, `title`, `body`, `timesubmitted`) VALUES
+(1, 'Title', 'BodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyyBodyydyy', '2018-07-03 16:29:49'),
+(4, 'ASD', 'ASD', '2018-07-03 16:50:10'),
+(5, 'asd', 'asd', '2018-07-03 17:03:56');
 
 -- --------------------------------------------------------
 
@@ -45,7 +67,8 @@ CREATE TABLE `bmi_log` (
 INSERT INTO `bmi_log` (`bmi_log_id`, `user_id`, `datesubmitted`, `weight`, `height`, `bmi`, `category`) VALUES
 (1, 2, '2018-07-01', 55, 1.2, 38.194444444444, 'Overweight'),
 (2, 2, '2018-07-01', 55, 1.2, 38.194444444444, 'Overweight'),
-(3, 2, '2018-07-01', 60, 1.8, 18.518518518519, 'Healthy');
+(3, 2, '2018-07-01', 60, 1.8, 18.518518518519, 'Healthy'),
+(4, 4, '2018-07-03', 55, 1.7, 19.031141868512, 'Healthy');
 
 -- --------------------------------------------------------
 
@@ -69,7 +92,6 @@ INSERT INTO `exercises` (`exercise_id`, `type`, `name`, `description`, `filepath
 (1, 'Bodybuilding', 'Dumbbell Bench Press', 'The dumbbell bench press is an upper body exercise that strengthens the chest, shoulders, and triceps while improving muscular balance. Using dumbbells allows for a great range of motion in the chest and can also be easier on the shoulders and prevent pain.', 'img/ex-dumbbenchpress.jpg'),
 (2, 'Bodybuilding', 'Single Leg Press', 'Targets the quadriceps muscles in the front of the thighs, the gluteal muscles in the buttocks, the hamstring muscles in the back of the thighs, and the calves, all in an integrated fashion. It\'s an especially efficient way to strengthen your lower body.', 'img/ex-legpress.jpg'),
 (3, 'Bodybuilding', 'Incline Hammer Curls', 'The incline hammer curl engages your brachialis and brachioradialis, stabilizing the movement of your arms and accentuating their size. It also trains your flexor muscles, thereby improving grip strength.', 'img/ex-hammer.jpg'),
-(4, 'Bodybuilding', 'Rickshaw Carry', 'This works with various muscle groups such as quadriceps, hamstrings, abdominals, traps calves, glutes, and lower back.', 'img/ex-rickshaw.jpg'),
 (5, 'Bodybuilding', 'Dips - Triceps Version', 'Dips are a compound push exercise with a small range of motion that primarily works your triceps but also engages your forearms, shoulders, chest and lower back.', 'img/ex-dips.jpg'),
 (6, 'Bodybuilding', 'Calf Raise', 'Calf raises are a method of exercising the gastrocnemius, tibialis posterior and soleus muscles of the lower leg. The movement performed is plantar flexion, a.k.a. ankle extension.', 'img/ex-calfraise.jpg'),
 (7, 'Gain', 'Barbell Squat', 'A barbell squat is a push-type, compound exercise which works primarily your quadriceps, but also trains your glutes, hamstrings, and calves, as well as muscles in your lower back.', 'img/ex-gain-barbellsquat.jpg'),
@@ -99,14 +121,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `username`, `password`, `preferredprogram`, `usertype`) VALUES
 (1, 'Noel Anthony', 'Arandilla', 'admin', 'admin', 'Lean', 2),
-(2, 'Noel Anthony', 'Arandilla', 'user', 'user', 'Bodybuilding', 1),
-(3, 'Fnae', 'lname', 'mytvadmin', 'admin', 'Lean', 1),
-(4, 'ted', 'sttest', 'test', 'test', 'Lean', 1),
-(5, 'gain first', 'last', 'gain', 'gain', 'Gain', 1);
+(2, 'Noel Anthony', 'Arandilla', 'user', 'user', 'Gain', 1),
+(3, 'Fnae', 'lname', 'mytvadmin', 'admin', 'Lean', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- Indexes for table `bmi_log`
@@ -131,10 +157,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `bmi_log`
 --
 ALTER TABLE `bmi_log`
-  MODIFY `bmi_log_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bmi_log_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `exercises`

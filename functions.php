@@ -38,6 +38,28 @@
 			}
 			return $exerciseArray;
 		}
+		public function retrieveAnnounce(){
+			$sql = "SELECT * FROM announcements";
+			$announceArray = array();
+			$res = mysqli_query($this->conn, $sql);
+
+			while($row = mysqli_fetch_assoc($res)){
+				$announceArray[] = $row;
+				//populate itemarray with data inside table
+			}
+			return $announceArray;
+		}
+		public function retrieveUsers(){
+			$sql = "SELECT * FROM users";
+			$userArray = array();
+			$res = mysqli_query($this->conn, $sql);
+
+			while($row = mysqli_fetch_assoc($res)){
+				$userArray[] = $row;
+				//populate itemarray with data inside table
+			}
+			return $userArray;
+		}
 
 		public function insertExercise($type, $name,$description,$file){
 			if(is_array($file)){
@@ -56,6 +78,15 @@
  			$filepath = 'img/'.$file['name'];
 			$sql = "INSERT INTO exercises(type,name, description, filepath)
 					VALUES ('$type', '$name','$description','$filepath')";
+			$res = mysqli_query($this->conn,$sql);
+
+			return $res;
+		}
+		public function insertAnnounce($type, $title,$body){
+			date_default_timezone_set('Asia/Hongkong');  
+			$date = date('Y-m-d H:i:s');
+			$sql = "INSERT INTO announcements(type,title, body, timesubmitted)
+					VALUES ('$type', '$title','$body','$date')";
 			$res = mysqli_query($this->conn,$sql);
 
 			return $res;
@@ -80,12 +111,53 @@
 
 			return $res;
 		}
+		public function updateAnnounce($title,$body,$id){
+			
+			$sql = "UPDATE announcements SET title='$title',body='$body' WHERE a_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function updateUser($type,$id){
+			
+			$sql = "UPDATE users SET preferredprogram='$type' WHERE user_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function updateAdmin($id){
+			
+			$sql = "UPDATE users SET usertype='2' WHERE user_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function updateUsertoadmin($id){
+			
+			$sql = "UPDATE users SET usertype='1' WHERE user_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
 		public function deleteExercise($id){
 			$sql = "DELETE FROM exercises WHERE exercise_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
+		public function deleteAnnounce($id){
+			$sql = "DELETE FROM announcements WHERE a_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function deleteUser($id){
+			$sql = "DELETE FROM users WHERE user_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+
 
 	}
 

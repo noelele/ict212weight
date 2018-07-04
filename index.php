@@ -93,8 +93,8 @@
         <a class="navbar-brand" href="#">Health and Wellness</a>
         </div>
         <div class="col-sm-4 col-lg-3 col-xs-3">
-        <a class="btn btn-primary" href="#signin" data-toggle="modal" data-target=".log-sign" >Log in</a>
-        <a class="btn btn-default" href="#signup" data-toggle="modal" data-target=".log-sign" >Sign Up</a>
+        <a class="btn btn-primary" href="#signin"  data-toggle="modal" data-target=".log-sign" >Log in</a>
+        <a class="btn btn-default" href="#signup"  data-toggle="modal" data-target=".log-sign" >Sign Up</a>
          </div>
       </div>
     </nav>
@@ -215,12 +215,10 @@
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <form>
               <div class="form-row">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-                </div>
-                <div class="col-12 col-md-3">
-                  <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-                </div>
+                
+               
+                  <a href="#signup" data-toggle="modal" data-target=".log-sign" type="submit" class="btn btn-block btn-lg btn-primary" >Sign up!</a>
+                
               </div>
             </form>
           </div>
@@ -303,12 +301,9 @@
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <form>
               <div class="form-row">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-                </div>
-                <div class="col-12 col-md-3">
-                  <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-                </div>
+                
+                  <a  href="#signup" data-toggle="modal" data-target=".log-sign" type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</a>
+                
               </div>
             </form>
           </div>

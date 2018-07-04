@@ -110,3 +110,15 @@ img{
   max-width:50%;
   max-height:50%;
 }
+
+.hidden {
+    display: none;
+}
+
+th{
+   max-width: 200px;
+}
+td{
+   max-width: 200px;
+   word-wrap: break-word;
+}

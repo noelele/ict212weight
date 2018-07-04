@@ -27,6 +27,10 @@ jQuery(document).ready(function($){
 
 	});
 
+	$('a[data-toggle=modal][data-target]').click(function () {
+    var target = $(this).attr('href');
+    $('a[data-toggle=tab][href=' + target + ']').tab('show');
+	});
 	//close modal
 	$('.cd-user-modal').on('click', function(event){
 		if( $(event.target).is($form_modal) || $(event.target).is('.cd-close-form') ) {

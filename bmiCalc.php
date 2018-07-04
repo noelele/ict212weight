@@ -29,7 +29,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="#">Health and Wellness</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,9 @@
             
             <li class="nav-item active">
               <a class="nav-link" href="bmiCalc.php">BMI Calculator<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="announcementsuser.php">Announcements</a>
             </li>
             
             <li class="nav-item">
@@ -74,13 +77,13 @@
           <p>BMI (Body Mass Index) is important as it is widely regarded that your chances of having a longer and healthier life are improved if you have a healthy BMI.</p>
           <p>If your BMI is high, you may also have an increased risk of developing <a href="https://www.diabetes.co.uk/type2-diabetes.html">type 2 diabetes</a>, as well as other metabolic diseases such as <a href="https://www.diabetes.co.uk/diabetes-complications/high-blood-pressure.html"> hypertension</a>, high cholesterol and heart disease.</p>
           <p>
-            <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="#" id="focusinput">Calculate now! &raquo;</a>
           </p>
         </div>
         <div class="col-sm-6">
           <h2 class="mt-4">Calculate</h2>
           <form method="POST">
-          	<p>Weight (kg)</p><input type=number step=0.1 name="weight" min="0" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>"/><br/>
+          	<p>Weight (kg)</p><input id="weight" type=number step=0.1 name="weight" min="0" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>"/><br/>
           	<p>Height (m)</p><input type=number step=0.01 name="height" min="0"  value="<?php echo isset($_POST['height']) ? $_POST['height'] : '' ?>"/><br/><br/>
           	<button type="submit" value="calculate" name="calculateBtn" class="btn btn-info btn-block calculatebtn">Calculate</button>
             <?php
@@ -147,9 +150,14 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
+    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+      $('#focusinput').click(function() {
+     $('#weight').focus();
+});
+    </script>
   </body>
 
 </html>
