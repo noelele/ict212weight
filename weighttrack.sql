@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2018 at 10:03 AM
+-- Generation Time: Jul 07, 2018 at 07:56 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -120,9 +120,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `username`, `password`, `preferredprogram`, `usertype`) VALUES
-(1, 'Noel Anthony', 'Arandilla', 'admin', 'admin', 'Lean', 2),
-(2, 'Noel Anthony', 'Arandilla', 'user', 'user', 'Gain', 1),
-(3, 'Fnae', 'lname', 'mytvadmin', 'admin', 'Lean', 1);
+(5, 'Encryt', 'Test', 'user', '86d2eaf3022a257e9d67899fe9cb9378', 'Bodybuilding', 1),
+(6, 'sha', 'five', 'sha', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'Bodybuilding', 1),
+(7, 'Admin', 'Admin', 'admin', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'Bodybuilding', 2),
+(8, 'Noel Anthony', 'Arandilla', 'noel', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'Bodybuilding', 1),
+(9, 'Richellou', 'Arbuis', 'arbuis', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'Gain', 1);
 
 --
 -- Indexes for dumped tables
@@ -178,7 +180,7 @@ ALTER TABLE `exercises`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
