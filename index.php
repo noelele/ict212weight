@@ -40,7 +40,8 @@
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = hash('sha512',mysqli_real_escape_string($_POST['password']));
+        /*$password = $_POST['password'];*/
         $preferredprogram = $_POST['preferredprogram'];
         $usertype = '1';
         
@@ -66,14 +67,14 @@
            $usertype = $row['usertype'];
       //  $trainer_id = $row['trainer_id'];
       if(isset($_POST['password'])){
-        if($_POST['username'] == $username && ($_POST['password'] == $password && $usertype == '1')){
+        if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '1')){
 /*          $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;*/
           $_SESSION['user_id'] = $row['user_id'];
           $_SESSION['preferredprogram'] = $row['preferredprogram'];
 
           header('location: bmiCalc.php');
-        }else if($_POST['username'] == $username && ($_POST['password'] == $password && $usertype == '2')){
+        }else if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '2')){
   /*        $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;*/
           header('location: adminpage.php');
