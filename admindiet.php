@@ -86,7 +86,7 @@
     <!--MODAL END-->
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Admin</a>
-      <input onkeyup="searchFunction()" id="searchInput" class="form-control form-control-dark w-100" type="text" placeholder="Search by Title" aria-label="Search">
+      <input onkeyup="searchFunction()" id="searchInput" class="form-control form-control-dark w-100" type="text" placeholder="Search by Food Name" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="userlogout.php">Sign out</a>
@@ -192,7 +192,7 @@ function searchFunction() {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[0];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
