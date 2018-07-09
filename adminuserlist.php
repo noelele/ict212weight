@@ -47,7 +47,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <h4 class="modal-title" id="myModalLabel">Announce</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
@@ -71,14 +71,14 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Body: </label>
               <input type="text" class="form-control" id="datePicker" name="body" placeholder="Description" required>
-            </div>                      
-           
-          
+            </div>
+
+
           </div>
           <div class="modal-footer">
-           
+
             <button type="submit" name="addSubmit" class="btn btn-primary">Submit</button>
-           
+
           </div>
           </form>
         </div>
@@ -118,10 +118,10 @@
                   Users<span class="sr-only">(current)</span>
                 </a>
               </li>
-             
+
             </ul>
 
-            
+
           </div>
         </nav>
 
@@ -132,10 +132,10 @@
             <h1 class="h2">Users</h1>
               </div>
               <div class="col-xs-2 col-md-2 col-lg-2">
-            
+
           </div>
-           
-            </div>      
+
+            </div>
           </div>
           <!--CONTENT HERE-->
           <table class="table table-hover usersTable" id="exerciseTable">
@@ -162,14 +162,14 @@
                               }else if($row['usertype']==2){
                                 echo "Admin";
                               } ?></td>
-                        <td><?php if($row['usertype'] == 1){ echo '<a type="button" class="btn btn-warning" name="updateBtn" href="updateusertoadmin.php?id='.$row["user_id"].'"> Make Admin</a>'; 
-                      }else if($row['usertype'] == 2){ echo '<a type="button" class="btn btn-warning" name="updateBtn" href="updateadmintouser.php?id='.$row["user_id"].'"> Make User</a>'; 
+                        <td><?php if($row['usertype'] == 1){ echo '<a type="button" class="btn btn-warning" name="updateBtn" href="updateusertoadmin.php?id='.$row["user_id"].'"> Make Admin</a>';
+                      }else if($row['usertype'] == 2){ echo '<a type="button" class="btn btn-warning" name="updateBtn" href="updateadmintouser.php?id='.$row["user_id"].'"> Make User</a>';
                       }  ?></td>
                         <td><a type="button" onclick="return confirm('Are you sure?')" class="btn btn-danger" name="deleteBtn" href="deleteuser.php?id=<?php echo $row['user_id']?>">Delete</a></td>
                       </tr>
-            
+
                       <?php } ?>
-          
+
            </table>
         </main>
       </div>
@@ -179,7 +179,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-slim.min.js"><\/script>')</script>
     <script src="vendor/jquery/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -190,7 +190,7 @@
     </script>
     <script>
 function searchFunction() {
-  // Declare variables 
+  // Declare variables
   var input, filter, table, tr, td, i;
   input = document.getElementById("searchInput");
   filter = input.value.toUpperCase();
@@ -206,7 +206,7 @@ function searchFunction() {
       } else {
         tr[i].style.display = "none";
       }
-    } 
+    }
   }
   /*for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
@@ -216,7 +216,7 @@ function searchFunction() {
       } else {
         tr[i].style.display = "none";
       }
-    } 
+    }
   }*/
 }
 </script>

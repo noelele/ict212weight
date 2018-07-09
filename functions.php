@@ -6,14 +6,14 @@
 		private $_supportedFormats = ['image/jpg','image/png','image/jpeg',
  		'image/gif'];
 
- 		
+
 
 		public function __construct(){
 			//connect to db
 			$this -> conn = mysqli_connect("localhost","root","","weighttrack");
 										//host, username,password,database name
 			if($this -> conn){
-				
+
 			}else{
 				echo "Error connecting to database: ".mysqli_error();
 			}
@@ -39,7 +39,7 @@
 			return $exerciseArray;
 		}
 		public function retrieveAnnounce(){
-			$sql = "SELECT * FROM announcements";
+			$sql = "SELECT * FROM announcements ORDER BY timesubmitted DESC";
 			$announceArray = array();
 			$res = mysqli_query($this->conn, $sql);
 
@@ -82,11 +82,11 @@
 
 			return $res;
 		}
-		public function insertAnnounce($type, $title,$body){
-			date_default_timezone_set('Asia/Hongkong');  
+		public function insertAnnounce($title,$body){
+
 			$date = date('Y-m-d H:i:s');
-			$sql = "INSERT INTO announcements(type,title, body, timesubmitted)
-					VALUES ('$type', '$title','$body','$date')";
+			$sql = "INSERT INTO announcements(title, body, timesubmitted)
+					VALUES ( '$title','$body','$date')";
 			$res = mysqli_query($this->conn,$sql);
 
 			return $res;
@@ -112,28 +112,28 @@
 			return $res;
 		}
 		public function updateAnnounce($title,$body,$id){
-			
+
 			$sql = "UPDATE announcements SET title='$title',body='$body' WHERE a_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 		public function updateUser($type,$id){
-			
+
 			$sql = "UPDATE users SET preferredprogram='$type' WHERE user_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 		public function updateAdmin($id){
-			
+
 			$sql = "UPDATE users SET usertype='2' WHERE user_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 		public function updateUsertoadmin($id){
-			
+
 			$sql = "UPDATE users SET usertype='1' WHERE user_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
