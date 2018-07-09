@@ -54,6 +54,9 @@
             <li class="nav-item">
               <a class="nav-link" href="announcementsuser.php">Announcements</a>
             </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="userdiet.php">Diet</a>
+            </li>
             
             <li class="nav-item ">
               <a class="nav-link" href="exerciseRecommend.php">Exercise Recommendation</a>
@@ -89,7 +92,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto contents">
           <?php
-              $result = $con->query("SELECT * FROM announcements"); 
+              $result = $con->query("SELECT * FROM announcements WHERE activate='1'"); 
 
               while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
               echo 

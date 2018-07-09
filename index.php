@@ -44,6 +44,7 @@
         /*$password = $_POST['password'];*/
         $preferredprogram = $_POST['preferredprogram'];
         $usertype = '1';
+
         
   
         if($dataOps->registerUser($fname, $lname, $username, $password, $preferredprogram, $usertype)){
@@ -67,14 +68,14 @@
            $usertype = $row['usertype'];
       //  $trainer_id = $row['trainer_id'];
       if(isset($_POST['password'])){
-        if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '1')){
+        if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '1' && $row['activate'] == '1' )){
 /*          $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;*/
           $_SESSION['user_id'] = $row['user_id'];
           $_SESSION['preferredprogram'] = $row['preferredprogram'];
 
           header('location: bmiCalc.php');
-        }else if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '2')){
+        }else if($_POST['username'] == $username && ($row['password'] == $password && $usertype == '2'  && $row['activate'] == '1')){
   /*        $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;*/
           header('location: adminpage.php');

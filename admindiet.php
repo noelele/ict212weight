@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>ANNOUNCEMENTS</title>
+    <title>Diet Recommendations</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,10 +29,10 @@
       $dataOps = new dataOps();
       if (isset($_POST['addSubmit'])){
 
-          $title = $_POST['title'];
-          $body = $_POST['body'];
+          $name = $_POST['name'];
+          $desc = $_POST['desc'];
 
-        if($dataOps->insertAnnounce( $title,$body)){
+        if($dataOps->insertDiet($name,$desc)){
           echo "Data updated";
 
         }else{
@@ -52,7 +52,7 @@
         }
 
       }
-      $announceArray = $dataOps->retrieveAnnounce();
+      $dietArray = $dataOps->retrieveDiet();
     ?>
     <!--add MODAL-->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -60,18 +60,18 @@
         <div class="modal-content">
           <div class="modal-header">
 
-            <h4 class="modal-title" id="myModalLabel">Announce</h4>
+            <h4 class="modal-title" id="myModalLabel">Add Diet Recommendation</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
             <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="exampleInputPassword1">Title: </label>
-              <input type="text" class="form-control" id="exampleInputPassword1" name="title" placeholder="Title" required>
+              <label for="exampleInputPassword1">Food Name: </label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="name" placeholder="Name of food" required>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Body: </label>
-              <input type="text" class="form-control" id="datePicker" name="body" placeholder="Description" required>
+              <label for="exampleInputPassword1">Description: </label>
+              <input type="text" class="form-control" id="datePicker" name="desc" placeholder="Description" required>
             </div>
           <div class="modal-footer">
 
@@ -106,7 +106,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="announcements.php">
+                <a class="nav-link " href="announcements.php">
                   <span data-feather="file"></span>
                   Announcements<span class="sr-only">(current)</span>
                 </a>
@@ -118,7 +118,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="admindiet.php">
+                <a class="nav-link active" href="admindiet.php">
                   <span data-feather="heart"></span>
                   Diet
                 </a>
@@ -133,12 +133,12 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <div class="row">
-              <div class="col-xs-7 col-md-5 col-lg-7">
-            <h1 class="h2">Announcements</h1>
+              <div class="col-xs-8 col-md-8 col-lg-8">
+            <h1 class="h2">Diet Recommendations</h1>
               </div>
               <div class="col-xs-2 col-md-2 col-lg-2">
             <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#addModal">
-            Add an announcement</button>
+            Add a diet recommendation</button>
           </div>
 
             </div>
@@ -148,17 +148,17 @@
                       <thead>
                        <tr >
 
-                       <th>Title</th>
-                       <th>Body</th>
+                       <th>Food Name</th>
+                       <th>Description</th>
                        </tr>
                      </thead>
-                      <?php foreach($announceArray as $row){ ?>
+                      <?php foreach($dietArray as $row){ ?>
                       <tr>
 
-                        <td><?php echo $row['title']; ?></td>
-                        <td><?php echo $row['body']; ?></td>
-                        <td><a type="button" class="btn btn-warning float-right" name="updateBtn" href="updateannounce.php?id=<?php echo $row['a_id']?>" >Update</a></td>
-                        <td><a type="button" onclick="return confirm('Are you sure?')" class="btn btn-danger" name="deleteBtn" href="deleteannounce.php?id=<?php echo $row['a_id']?>">Delete</a></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['description']; ?></td>
+                        <td><a type="button" class="btn btn-warning float-right" name="updateBtn" href="updatediet.php?id=<?php echo $row['diet_id']?>" >Update</a></td>
+                        <td><a type="button" onclick="return confirm('Are you sure?')" class="btn btn-danger" name="deleteBtn" href="deletediet.php?id=<?php echo $row['diet_id']?>">Delete</a></td>
                       </tr>
 
                       <?php } ?>

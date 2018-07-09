@@ -36,12 +36,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-          
+            
             <li class="nav-item ">
               <a class="nav-link" href="bmiCalc.php">BMI Calculator</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="announcementsuser.php">Announcements</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="userdiet.php">Diet</a>
             </li>
             
             <li class="nav-item ">

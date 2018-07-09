@@ -44,7 +44,9 @@
             <li class="nav-item">
               <a class="nav-link" href="announcementsuser.php">Announcements</a>
             </li>
-            
+            <li class="nav-item ">
+              <a class="nav-link" href="userdiet.php">Diet</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="exerciseRecommend.php">Exercise Recommendation</a>
             </li>

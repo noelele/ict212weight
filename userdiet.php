@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Exercises</title>
+    <title>Diet Recommendations</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     <?php
 
       $dataOps = new dataOps();
-      $exercisesArray = $dataOps->retrieveExercise();
+      $dietArray = $dataOps->retrieveDiet();
 
     ?>
     <!-- Navigation -->
@@ -48,12 +48,12 @@
             <li class="nav-item">
               <a class="nav-link" href="announcementsuser.php">Announcements</a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="userdiet.php">Diet</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="userdiet.php">Diet<span class="sr-only">(current)</span></a>
             </li>
             
-            <li class="nav-item active">
-              <a class="nav-link" href="exerciseRecommend.php">Exercise Recommendation<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="exerciseRecommend.php">Exercise Recommendation</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="profile.php">Profile</a>
@@ -79,24 +79,14 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Recommended Exercises
-        <small><?php
-                        $userId= $_SESSION['user_id'];
-                        $result = $con->query("SELECT preferredprogram FROM users WHERE user_id='" . $userId. "' AND activate='1' ");
-                        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-                          $preferredprogram = $row['preferredprogram'];
-                        echo $preferredprogram ;
-
-                        ?></small>
-      </h1>
+      <h1 class="my-4">Diet Recommendations</h1>
       <div class="row">
      <?php
-     $result = $con->query("SELECT * FROM exercises WHERE type='" . $preferredprogram. "' AND activate='1'"); 
+     $result = $con->query("SELECT * FROM diet WHERE activate='1'"); 
 
      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
      echo '<div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="'.$row['filepath'].'"><img class="card-img-top" src="'.$row['filepath'].'" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="#">'.$row['name'].'</a>
@@ -139,7 +129,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer style="margin-top:311px;" class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white"></p>
       </div>

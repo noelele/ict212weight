@@ -134,6 +134,12 @@
                   Users
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admindiet.php">
+                  <span data-feather="heart"></span>
+                  Diet
+                </a>
+              </li>
 
             </ul>
 

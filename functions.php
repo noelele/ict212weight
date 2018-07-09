@@ -20,15 +20,15 @@
 		}
 
 		public function registerUser($fname, $lname, $username, $password, $preferredprogram, $usertype){
-			$sql = "INSERT INTO users(fname, lname, username, password, preferredprogram, usertype)
-					VALUES ('$fname', '$lname', '$username', '$password', '$preferredprogram', '$usertype')";
+			$sql = "INSERT INTO users(fname, lname, username, password, preferredprogram, usertype,activate)
+					VALUES ('$fname', '$lname', '$username', '$password', '$preferredprogram', '$usertype','1')";
 			$res = mysqli_query($this->conn,$sql) or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 
 		public function retrieveExercise(){
-			$sql = "SELECT * FROM exercises";
+			$sql = "SELECT * FROM exercises WHERE activate='1'";
 			$exerciseArray = array();
 			$res = mysqli_query($this->conn, $sql);
 
@@ -39,7 +39,7 @@
 			return $exerciseArray;
 		}
 		public function retrieveAnnounce(){
-			$sql = "SELECT * FROM announcements ORDER BY timesubmitted DESC";
+			$sql = "SELECT * FROM announcements  WHERE activate='1' ORDER BY timesubmitted DESC";
 			$announceArray = array();
 			$res = mysqli_query($this->conn, $sql);
 
@@ -49,8 +49,19 @@
 			}
 			return $announceArray;
 		}
+		public function retrieveDiet(){
+			$sql = "SELECT * FROM diet  WHERE activate='1'";
+			$dietArray = array();
+			$res = mysqli_query($this->conn, $sql);
+
+			while($row = mysqli_fetch_assoc($res)){
+				$dietArray[] = $row;
+				//populate itemarray with data inside table
+			}
+			return $dietArray;
+		}
 		public function retrieveUsers(){
-			$sql = "SELECT * FROM users";
+			$sql = "SELECT * FROM users  WHERE activate='1'";
 			$userArray = array();
 			$res = mysqli_query($this->conn, $sql);
 
@@ -76,8 +87,8 @@
  			}
 
  			$filepath = 'img/'.$file['name'];
-			$sql = "INSERT INTO exercises(type,name, description, filepath)
-					VALUES ('$type', '$name','$description','$filepath')";
+			$sql = "INSERT INTO exercises(type,name, description, filepath,activate)
+					VALUES ('$type', '$name','$description','$filepath','1')";
 			$res = mysqli_query($this->conn,$sql);
 
 			return $res;
@@ -85,8 +96,17 @@
 		public function insertAnnounce($title,$body){
 
 			$date = date('Y-m-d H:i:s');
-			$sql = "INSERT INTO announcements(title, body, timesubmitted)
-					VALUES ( '$title','$body','$date')";
+			$sql = "INSERT INTO announcements(title, body, timesubmitted,activate)
+					VALUES ( '$title','$body','$date','1')";
+			$res = mysqli_query($this->conn,$sql);
+
+			return $res;
+		}
+		public function insertDiet($name,$desc){
+
+			
+			$sql = "INSERT INTO diet(name, description,activate)
+					VALUES ( '$name','$desc','1')";
 			$res = mysqli_query($this->conn,$sql);
 
 			return $res;
@@ -118,6 +138,13 @@
 
 			return $res;
 		}
+		public function updateDiet($name,$desc,$id){
+
+			$sql = "UPDATE diet SET name='$name',description='$desc' WHERE diet_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
 		public function updateUser($type,$id){
 
 			$sql = "UPDATE users SET preferredprogram='$type' WHERE user_id='$id'";
@@ -140,19 +167,25 @@
 			return $res;
 		}
 		public function deleteExercise($id){
-			$sql = "DELETE FROM exercises WHERE exercise_id='$id'";
+			$sql = "UPDATE exercises SET activate='0' WHERE exercise_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 		public function deleteAnnounce($id){
-			$sql = "DELETE FROM announcements WHERE a_id='$id'";
+			$sql = "UPDATE announcements SET activate='0' WHERE a_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
 		}
 		public function deleteUser($id){
-			$sql = "DELETE FROM users WHERE user_id='$id'";
+			$sql = "UPDATE users SET activate='0' WHERE user_id='$id'";
+			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
+
+			return $res;
+		}
+		public function deleteDiet($id){
+			$sql = "UPDATE diet SET activate='0' WHERE diet_id='$id'";
 			$res = mysqli_query($this->conn,$sql)  or die (mysqli_error($this->conn));
 
 			return $res;
